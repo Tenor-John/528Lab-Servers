@@ -5,7 +5,7 @@ This manual is written to include the use of Linux basics, how to link lab serve
 
 | 量化软件 | 第一性原理软件 | 分子动力学模拟 | 辅助软件 |
 | --- | --- | --- | --- |
-| 1️⃣ Gaussian | VASP | Pymol | Multiwfn |
+| 1️⃣ [Gaussian](Gaussian.md) | VASP | Pymol | Multiwfn |
 | 2️⃣ ORCA | | Lammps | VMD |
 | 3️⃣ | | | Gaussview |
 | 4️⃣ | | | vaspkit |
