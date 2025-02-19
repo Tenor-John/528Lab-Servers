@@ -227,3 +227,69 @@ LORBIT = 11
 - 对于以Gamma点为中心的网格，偶数网格有时比奇数网格具有更好的收敛性。这是因为它们避开了Gamma点本身，Gamma点是一个非常高对称的点，不是一个好的代表性采样点
 - 然而，对于具有六角对称性的系统，你基本上永远不应该使用偶数网格（以Gamma为中心），因为应用于偶数网格的六角对称操作会生成布里渊区外的点
 - 更多详情可参考Chadi和Cohen的论文
+
+## INCAR模板
+
+```
+! Global Parameters
+ISTART  = 0            ! Fresh run: 0, Continue: 1, Continue with constrained magnetization: 2
+ISPIN   = 2            ! No spin: 1, Spin polarized: 2
+LREAL   = .FALSE.      ! Projection operators: .FALSE. for accurate, Auto for large systems >20 atoms
+ENCUT   = 550.0        ! Recommended: max(ENMAX) * 1.3 from POTCAR, typical range: 400-600 eV
+PREC    = Accurate     ! Normal/Accurate/High/Med/Low, use Accurate for final results
+LWAVE   = .TRUE.       ! Write WAVECAR: .TRUE./.FALSE.
+LCHARG  = .TRUE.       ! Write CHGCAR: .TRUE./.FALSE.
+ADDGRID = .TRUE.       ! Augmentation grid: .TRUE. for better accuracy
+LASPH   = .TRUE.       ! Non-spherical elements: .TRUE. recommended
+GGA_COMPAT = .FALSE.   ! GGA compatibility: .TRUE./.FALSE.
+LORBIT  = 11           ! 0: No DOSCAR, 10: DOSCAR only, 11: DOSCAR + PROCAR
+
+! Electronic Relaxation
+ISMEAR  = -5           ! Semiconductors/insulators: -5, Metals: 1 or 2, Unknown: 0
+SIGMA   = 0.1          ! For ISMEAR>0: metals 0.1-0.2, semiconductors 0.01-0.05
+EDIFF   = 1E-8         ! SCF convergence, typical ranges: 1E-4 (rough) to 1E-8 (accurate)
+GGA     = PE           ! PE for PBE, 91 for PW91, RP for rPBE, etc.
+
+! Ionic Relaxation
+NSW     = 50           ! Max ionic steps: 40-100 for normal systems, >100 for complex ones
+IBRION  = 2            ! 0:MD, 1:quasi-Newton, 2:CG (most stable), 3:damped MD
+ISIF    = 3            ! 2: relax ions only, 3: relax ions+cell, 4: cell shape only
+EDIFFG  = 0            ! Ionic convergence: positive for energy (eg 1E-3), negative for forces (eg -0.01)
+PSTRESS = 10.0         ! Target pressure in kB, 0 for no pressure
+
+! Optional Parameters (remove ! at start of line to activate)
+! DFT+U Parameters
+! LDAU    = .TRUE.      ! Enable/disable DFT+U: .TRUE./.FALSE.
+! LDAUTYPE= 2           ! 1: Liechtenstein, 2: Dudarev (simplified)
+! LDAUL   = -1 2 -1     ! l quantum numbers: -1(no U), 0(s), 1(p), 2(d), 3(f)
+! LDAUU   = 0.0 5.0 0.0 ! U values: typically 0-10 eV, Fe/Co/Ni≈5eV, rare-earth≈6-7eV
+! LDAUJ   = 0.0 0.0 0.0 ! J values: typically 0-1 eV, often 0 for LDAUTYPE=2
+! LMAXMIX = 4           ! 4 for d electrons, 6 for f electrons
+! LDAUPRINT = 2         ! 0: none, 1: occupancy matrix, 2: full output
+
+! Spin and Magnetic Settings
+! MAGMOM  = 5*0.0       ! Initial moments in μB, typical: Fe≈4-5, Co≈3, Ni≈1-2
+
+! SOC calculations
+! LSORBIT = .TRUE.      ! Enable spin-orbit coupling: .TRUE./.FALSE.
+! LNONCOLLINEAR = .TRUE. ! Required for SOC: .TRUE./.FALSE.
+! SAXIS   = 0 0 1       ! Quantization axis: x y z components
+! LORBMOM = .TRUE.      ! Calculate orbital moments: .TRUE./.FALSE.
+
+! Parallelization
+! NPAR    = 32          ! Usually sqrt(number of cores), must be a factor of total cores
+! NCORE   = 32          ! Typically 4-32, depends on system size and available cores
+! KPAR    = 1           ! Number of k-point groups, must be a factor of total k-points
+
+! Advanced Convergence
+! ALGO    = A           ! N: DAV, V: RMM-DIIS, F: Fast, A: All (combines N and V)
+! AMIX    = 0.1         ! Linear mixing, difficult cases: 0.01-0.1, normal: 0.2-0.4
+! BMIX    = 0.00001     ! Cutoff value, difficult cases: 0.00001-0.0001, normal: 0.001
+! AMIX_MAG = 0.2        ! Magnetic mixing, typically 1.6-2.0 × AMIX value
+! BMIX_MAG = 0.00001    ! Magnetic cutoff, typically same as BMIX
+
+! DOS Calculations
+! NEDOS   = 3000        ! Number of DOS points, typical range: 1000-5000
+! EMIN    = -0.5        ! Lower energy bound relative to E_Fermi, typical: -10 to -20 eV
+! EMAX    = 14.5        ! Upper energy bound relative to E_Fermi, typical: +10 to +20 eV
+```
