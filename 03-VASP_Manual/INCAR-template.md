@@ -18,6 +18,8 @@ SYSTEM = XX
 
  LPLANE     = .TRUE.
  NCORE      = 6 
+ NPAR  = 6  ! 建议和NCORE保持一致
+ KPAR  = 2  ！并行化k点的设置，建议设置为2到4之间
  LSCALU     = .FALSE.
  NSIM       = 4
 
@@ -117,6 +119,8 @@ SYSTEM = XX  ! 系统名称，用于区分计算任务
 
  LPLANE = .TRUE. ! 平面波并行化，TRUE表示启用
  NCORE = 6  ! 每个能带使用的核心数，推荐设置为系统核心数的平方根
+ NPAR  = 6  ! 建议和NCORE保持一致
+ KPAR  = 2  ！并行化k点的设置，建议设置为2到4之间
  LSCALU = .FALSE. ! 是否使用Scalapack库，FALSE表示禁用
  NSIM = 4   ! 同时处理的能带数，推荐设置为4-8
 
