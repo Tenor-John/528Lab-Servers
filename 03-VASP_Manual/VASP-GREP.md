@@ -61,3 +61,9 @@ $MPIRUN $MPIOPT vasp_std_vtst_sol
 
 ![alt text](image-1.png)
 
+```bahh
+grep TOTEN OUTCAR
+grep 'free energy' OUTCAR
+grep 'F=' vasp.log | tail -10       #查看最后十行的内容
+grep F= OSZICAR
+```
