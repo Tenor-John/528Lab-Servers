@@ -31,6 +31,7 @@
 - 考虑使用范德华校正（如DFT-D3、optB88-vdW等），特别是对于物理吸附系统。
 
 ## 结构优化INCAR
+
 ```bash
 SYSTEM = PbO2 2x2x3 Struc OPT
 ISTART =  1            (Read existing wavefunction, if there)
@@ -78,6 +79,7 @@ IDIPOL = 3
 LDIPOL = .TRUE.
 DIPOL  = 0 0 8.9 
 ```
+
 ## 能量计算INCAR
 
 计算能量时应该固定住和结构优化中一样的原子层数，最起码应该将吸附位点层的原子解放开，防止近似处理
@@ -124,7 +126,7 @@ EDIFF  =  1E-07        (SCF energy convergence, in eV)
 Ionic Relaxation
 NSW    =  0          (Max ionic steps，不进行结构优化)
 IBRION =  -1            (Algorithm: 0-MD, 1-Quasi-New, 2-CG，不计算原子间力)
-ISIF   =  ,0            (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 4-Shape/Ions)
+ISIF   =  0            (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 4-Shape/Ions)
 #EDIFFG = -1E-02        (Ionic convergence, eV/AA)能量计算不需要离子步
 # ISYM =  2            (Symmetry: 0=none, 2=GGA, 3=hybrids)
 
