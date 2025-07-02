@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)]()
 [![Update](https://img.shields.io/badge/Last%20Update-2025.07.02-red.svg)]()
 
-**欢迎来到528实验室计算化学团队！**  
+**欢迎来到528实验室计算化学团队！**
 *在使用528实验室服务器之前的必备指南*
 
 </div>
@@ -43,15 +43,15 @@ graph LR
 
 ### 🧮 量子化学软件
 
-| 软件 | 特色功能 | 使用手册 | 状态 |
-|------|----------|----------|------|
+| 软件               | 特色功能                   | 使用手册                                       | 状态    |
+| ------------------ | -------------------------- | ---------------------------------------------- | ------- |
 | **Gaussian** | 分子轨道、频率分析、激发态 | [📖 Gaussian手册](02-Gaussian_Manual/Gaussian.md) | ✅ 可用 |
-| **ORCA** | 高精度单点、耦合簇方法 | [📖 ORCA手册](04-ORCA_Manual/ORCA.md) | ✅ 可用 |
+| **ORCA**     | 高精度单点、耦合簇方法     | [📖 ORCA手册](04-ORCA_Manual/ORCA.md)             | ✅ 可用 |
 
 ### ⚛️ 第一性原理软件
 
-| 软件 | 特色功能 | 使用手册 | 状态 |
-|------|----------|----------|------|
+| 软件           | 特色功能            | 使用手册                           | 状态    |
+| -------------- | ------------------- | ---------------------------------- | ------- |
 | **VASP** | 平面波DFT、固体计算 | [📖 VASP手册](03-VASP_Manual/VASP.md) | ✅ 可用 |
 
 #### VASP 专项教程
@@ -67,20 +67,20 @@ graph LR
 
 ### 🧬 分子动力学软件
 
-| 软件 | 特色功能 | 使用手册 | 状态 |
-|------|----------|----------|------|
-| **LAMMPS** | 大规模分子动力学模拟 | [📖 LAMMPS手册](07-LAMMPS_Manual/LAMMPS.md) | 🔄 开发中 |
-| **GROMACS** | 生物分子动力学模拟 | [📖 GROMACS手册](08-GROMACS_Manual/GROMACS.md) | 🔄 开发中 |
+| 软件              | 特色功能             | 使用手册                                    | 状态      |
+| ----------------- | -------------------- | ------------------------------------------- | --------- |
+| **LAMMPS**  | 大规模分子动力学模拟 | [📖 LAMMPS手册](07-LAMMPS_Manual/LAMMPS.md)    | 🔄 开发中 |
+| **GROMACS** | 生物分子动力学模拟   | [📖 GROMACS手册](08-GROMACS_Manual/GROMACS.md) | 🔄 开发中 |
 
 ### 🛠️ 辅助分析软件
 
-| 软件 | 特色功能 | 使用手册 | 状态 |
-|------|----------|----------|------|
-| **Multiwfn** | 波函数分析、电子结构分析 | [📖 Multiwfn手册](06-Multiwfn/Multiwfn.md) | ✅ 可用 |
-| **VMD** | 分子可视化、轨迹分析 | [📖 VMD手册](05-VMD/VMD.md) | ✅ 可用 |
-| **PyMOL** | 蛋白质结构可视化 | [📖 PyMOL手册](09-PyMOL_Manual/PyMOL.md) | 🔄 开发中 |
-| **GaussView** | Gaussian图形界面 | [📖 GaussView手册](02-Gaussian_Manual/GaussView.md) | 🔄 开发中 |
-| **VASPKIT** | VASP前后处理工具 | [📖 VASPKIT手册](03-VASP_Manual/VASPKIT.md) | 🔄 开发中 |
+| 软件                | 特色功能                 | 使用手册                                         | 状态      |
+| ------------------- | ------------------------ | ------------------------------------------------ | --------- |
+| **Multiwfn**  | 波函数分析、电子结构分析 | [📖 Multiwfn手册](06-Multiwfn/Multiwfn.md)          | ✅ 可用   |
+| **VMD**       | 分子可视化、轨迹分析     | [📖 VMD手册](05-VMD/VMD.md)                         | ✅ 可用   |
+| **PyMOL**     | 蛋白质结构可视化         | [📖 PyMOL手册](09-PyMOL_Manual/PyMOL.md)            | 🔄 开发中 |
+| **GaussView** | Gaussian图形界面         | [📖 GaussView手册](02-Gaussian_Manual/GaussView.md) | 🔄 开发中 |
+| **VASPKIT**   | VASP前后处理工具         | [📖 VASPKIT手册](03-VASP_Manual/VASPKIT.md)         | 🔄 开发中 |
 
 ---
 
@@ -102,6 +102,7 @@ graph LR
 ## 🎯 常用计算流程
 
 ### 💻 Gaussian 计算流程
+
 ```bash
 # 1. 准备输入文件
 vi molecule.gjf
@@ -117,6 +118,7 @@ tail -f molecule.log
 ```
 
 ### ⚛️ VASP 计算流程
+
 ```bash
 # 1. 准备输入文件 (POSCAR, INCAR, POTCAR, KPOINTS)
 vaspkit
@@ -136,14 +138,17 @@ grep "TOTEN" OUTCAR
 ## 🆘 常见问题与解决
 
 ### ❓ 连接问题
+
 - **无法SSH连接**：检查VPN连接和防火墙设置
 - **权限被拒绝**：确认用户名和密钥配置
 
 ### ❓ 作业问题
+
 - **作业排队过久**：检查资源申请是否合理
 - **计算中断**：查看错误日志文件(.err)
 
 ### ❓ 软件问题
+
 - **模块加载失败**：使用 `module avail` 查看可用模块
 - **路径错误**：确认软件安装路径和环境变量
 
@@ -154,7 +159,7 @@ grep "TOTEN" OUTCAR
 遇到问题？寻求帮助：
 
 1. **📖 查阅相关手册** - 先查看对应软件的使用手册
-2. **💬 咨询同组同学** - 寻求有经验同学的帮助  
+2. **💬 咨询同组同学** - 寻求有经验同学的帮助
 3. **📧 联系管理员** - 发送邮件详细描述问题
 4. **🐛 提交Issue** - 在GitHub仓库提交问题报告
 
@@ -170,8 +175,8 @@ grep "TOTEN" OUTCAR
 
 <div align="center">
 
-**📝 维护者：** 528实验室计算化学团队  
-**📧 联系方式：** [实验室邮箱]  
+**📝 维护者：** 528实验室江韬
+**📧 联系方式：** tjiang23@mail.ustc.edu.cn
 **🔗 项目地址：** [GitHub Repository](https://github.com/Tenor-John/528Lab-Servers)
 
 *⭐ 如果这个手册对您有帮助，请给我们一个Star！*
