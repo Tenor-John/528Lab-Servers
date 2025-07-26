@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学术数据库检索语法对比表</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+        }
+        
+        .header {
+            background: #34495e;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .table-container {
+            padding: 20px;
+            overflow-x: auto;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .comparison-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .comparison-table th:first-child {
+            text-align: left;
+            width: 200px;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f1f3f4;
+            transition: background-color 0.3s ease;
+        }
+        
+        .category {
+            background: #5d6d7e;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1em;
+        }
+        
+        .syntax-code {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 8px;
+            font-family: 'Courier New', Monaco, monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+            margin: 2px 0;
+            display: inline-block;
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .example {
+            color: #6c757d;
+            font-style: italic;
+            font-size: 0.85em;
+            margin-top: 4px;
+        }
+        
+        .highlight {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .note {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #6c757d;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        
+        .tips-section {
+            background: #2c3e50;
+            color: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        
+        .tips-section h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.4em;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .tip-card {
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #95a5a6;
+        }
+        
+        .tip-card h4 {
+            margin: 0 0 10px 0;
+            color: #ecf0f1;
+        }
+        
+        .database-logo {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin: 2px;
+        }
+        
+        .wos-logo {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .scopus-logo {
+            background: #34495e;
+            color: white;
+        }
+        
+        .gs-logo {
+            background: #5d6d7e;
+            color: white;
+        }
+        
+        .responsive-note {
+            font-size: 0.85em;
+            color: #6c757d;
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 学术数据库检索语法对比</h1>
+            <p>Web of Science • Scopus • Google Scholar 完整语法参考</p>
+        </div>
+        
+        <div class="table-container">
+            <div class="responsive-note">
+                💡 <strong>提示：</strong>表格支持水平滚动，可查看完整内容
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>检索功能</th>
+                        <th><span class="wos-logo">Web of Science</span></th>
+                        <th><span class="scopus-logo">Scopus</span></th>
+                        <th><span class="gs-logo">Google Scholar</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 基础检索 -->
+                    <tr class="category">
+                        <td colspan="4">📝 基础检索</td>
+                    </tr>
+                    <tr>
+                        <td><strong>普通关键词检索</strong></td>
+                        <td>
+                            <div class="syntax-code">emotion regulation</div>
+                            <div class="example">默认AND关系</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion regulation</div>
+                            <div class="example">默认AND关系</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion regulation</div>
+                            <div class="example">默认AND关系</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>短语检索</strong></td>
+                        <td>
+                            <div class="syntax-code">"emotion regulation"</div>
+                            <div class="example">精确短语匹配</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">"emotion regulation"</div>
+                            <div class="example">精确短语匹配</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">"emotion regulation"</div>
+                            <div class="example">精确短语匹配</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>通配符</strong></td>
+                        <td>
+                            <div class="syntax-code">regulat*</div>
+                            <div class="example">* 匹配任意字符<br>? 匹配单个字符</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">regulat*</div>
+                            <div class="example">* 匹配任意字符<br>? 匹配单个字符</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">regulat*</div>
+                            <div class="example">* 匹配任意字符<br>不支持 ?</div>
+                        </td>
+                    </tr>
+
+                    <!-- 逻辑运算符 -->
+                    <tr class="category">
+                        <td colspan="4">🔗 逻辑运算符</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AND 运算</strong></td>
+                        <td>
+                            <div class="syntax-code">emotion AND regulation</div>
+                            <div class="example">必须大写</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion AND regulation</div>
+                            <div class="example">必须大写</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion AND regulation</div>
+                            <div class="example">必须大写</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>OR 运算</strong></td>
+                        <td>
+                            <div class="syntax-code">emotion OR mood OR affect</div>
+                            <div class="example">必须大写</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion OR mood OR affect</div>
+                            <div class="example">必须大写</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion OR mood OR affect</div>
+                            <div class="example">必须大写</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>NOT/排除</strong></td>
+                        <td>
+                            <div class="syntax-code">emotion NOT anxiety</div>
+                            <div class="example">必须大写</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion AND NOT anxiety</div>
+                            <div class="example">需要AND NOT</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion -anxiety</div>
+                            <div class="example">使用减号</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>括号分组</strong></td>
+                        <td>
+                            <div class="syntax-code">(emotion OR mood) AND regulation</div>
+                            <div class="example">控制运算优先级</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">(emotion OR mood) AND regulation</div>
+                            <div class="example">控制运算优先级</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">(emotion OR mood) AND regulation</div>
+                            <div class="example">控制运算优先级</div>
+                        </td>
+                    </tr>
+
+                    <!-- 字段检索 -->
+                    <tr class="category">
+                        <td colspan="4">🎯 字段限定检索</td>
+                    </tr>
+                    <tr>
+                        <td><strong>标题检索</strong></td>
+                        <td>
+                            <div class="syntax-code">TI="emotion regulation"</div>
+                            <div class="example">Title字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">TITLE("emotion regulation")</div>
+                            <div class="example">或 TITLE-ABS-KEY</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">intitle:"emotion regulation"</div>
+                            <div class="example">注意冒号后无空格</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>作者检索</strong></td>
+                        <td>
+                            <div class="syntax-code">AU="James Gross"</div>
+                            <div class="example">Author字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">AUTHOR-NAME("James Gross")</div>
+                            <div class="example">或 AUTH(gross j)</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">author:"james gross"</div>
+                            <div class="example">支持多种形式<br>author:("jj gross" OR "james gross")</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>期刊检索</strong></td>
+                        <td>
+                            <div class="syntax-code">SO="Journal of Personality"</div>
+                            <div class="example">Source字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">SRCTYPE(j) AND EXACTSRCTITLE("Journal of Personality")</div>
+                            <div class="example">期刊类型+精确刊名</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">source:"Journal of Personality"</div>
+                            <div class="example">或在高级搜索中指定<br>"emotion" OR "cognition and emotion"</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>摘要检索</strong></td>
+                        <td>
+                            <div class="syntax-code">AB="cognitive reappraisal"</div>
+                            <div class="example">Abstract字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">ABS("cognitive reappraisal")</div>
+                            <div class="example">Abstract字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">不支持单独摘要检索</div>
+                            <div class="example">包含在默认搜索中</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>关键词检索</strong></td>
+                        <td>
+                            <div class="syntax-code">AK="emotional intelligence"</div>
+                            <div class="example">Author Keywords</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">KEY("emotional intelligence")</div>
+                            <div class="example">Keywords字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">不支持独立关键词检索</div>
+                            <div class="example">包含在默认搜索中</div>
+                        </td>
+                    </tr>
+
+                    <!-- 时间和类型限定 -->
+                    <tr class="category">
+                        <td colspan="4">📅 时间和类型限定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>年份限定</strong></td>
+                        <td>
+                            <div class="syntax-code">PY=(2020-2024)</div>
+                            <div class="example">Publication Year<br>PY=2023 (单年)</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">PUBYEAR > 2020 AND PUBYEAR < 2024</div>
+                            <div class="example">或在界面中设置</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">通过侧边栏时间筛选</div>
+                            <div class="example">不支持检索式中指定</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>文献类型</strong></td>
+                        <td>
+                            <div class="syntax-code">DT=(Article OR Review)</div>
+                            <div class="example">Document Type</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">DOCTYPE(ar) OR DOCTYPE(re)</div>
+                            <div class="example">ar=article, re=review</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">通过侧边栏筛选</div>
+                            <div class="example">不支持检索式中指定</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>语言限定</strong></td>
+                        <td>
+                            <div class="syntax-code">LA=English</div>
+                            <div class="example">Language字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">LANGUAGE(english)</div>
+                            <div class="example">或通过界面筛选</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">通过侧边栏语言筛选</div>
+                            <div class="example">不支持检索式中指定</div>
+                        </td>
+                    </tr>
+
+                    <!-- 高级功能 -->
+                    <tr class="category">
+                        <td colspan="4">🚀 高级检索功能</td>
+                    </tr>
+                    <tr>
+                        <td><strong>机构检索</strong></td>
+                        <td>
+                            <div class="syntax-code">OG="Stanford University"</div>
+                            <div class="example">Organization字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">AFFIL("Stanford University")</div>
+                            <div class="example">Affiliation字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">"Stanford University"</div>
+                            <div class="example">包含在默认搜索中</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>DOI检索</strong></td>
+                        <td>
+                            <div class="syntax-code">DO="10.1037/emo0000058"</div>
+                            <div class="example">Digital Object Identifier</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">DOI("10.1037/emo0000058")</div>
+                            <div class="example">DOI字段</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">"10.1037/emo0000058"</div>
+                            <div class="example">直接搜索DOI号</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>引用次数</strong></td>
+                        <td>
+                            <div class="syntax-code">通过界面排序和筛选</div>
+                            <div class="example">不支持检索式</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">通过界面排序和筛选</div>
+                            <div class="example">不支持检索式</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">通过"引用次数"排序</div>
+                            <div class="example">不支持检索式</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>开放获取</strong></td>
+                        <td>
+                            <div class="syntax-code">通过界面筛选</div>
+                            <div class="example">Open Access选项</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">OPENACCESS(1)</div>
+                            <div class="example">或通过界面筛选</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">通过侧边栏筛选</div>
+                            <div class="example">"自由获取论文"选项</div>
+                        </td>
+                    </tr>
+
+                    <!-- 特殊技巧 -->
+                    <tr class="category">
+                        <td colspan="4">💡 特殊检索技巧</td>
+                    </tr>
+                    <tr>
+                        <td><strong>邻近检索</strong></td>
+                        <td>
+                            <div class="syntax-code">emotion NEAR/3 regulation</div>
+                            <div class="example">3个词距离内</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">emotion W/3 regulation</div>
+                            <div class="example">3个词距离内<br>PRE/3 表示前后顺序</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">不支持邻近检索</div>
+                            <div class="example">使用短语检索替代</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>同义词扩展</strong></td>
+                        <td>
+                            <div class="syntax-code">不支持自动扩展</div>
+                            <div class="example">需手动添加OR组合</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">不支持自动扩展</div>
+                            <div class="example">需手动添加OR组合</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">自动包含同义词</div>
+                            <div class="example">智能搜索算法</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>模糊匹配</strong></td>
+                        <td>
+                            <div class="syntax-code">不支持</div>
+                            <div class="example">使用通配符替代</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">不支持</div>
+                            <div class="example">使用通配符替代</div>
+                        </td>
+                        <td>
+                            <div class="syntax-code">自动模糊匹配</div>
+                            <div class="example">容错能力强</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note">
+            <div class="note-title">⚠️ 重要注意事项</div>
+            <ul>
+                <li><strong>大小写敏感：</strong>逻辑运算符(AND, OR, NOT)在所有数据库中都必须使用大写</li>
+                <li><strong>字段代码：</strong>Web of Science使用简短字段代码(如TI, AU, SO)，Scopus使用函数形式(如TITLE(), AUTHOR())</li>
+                <li><strong>引号使用：</strong>所有数据库都支持双引号进行精确短语检索</li>
+                <li><strong>作者姓名：</strong>注意不同期刊对作者姓名缩写的不同处理方式</li>
+                <li><strong>特殊字符：</strong>某些特殊字符可能需要转义或特殊处理</li>
+            </ul>
+        </div>
+
+        <div class="tips-section">
+            <h3>🎯 实用检索技巧</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>🔍 高效检索策略</h4>
+                    <p>• 先用宽泛的关键词建立基础认知<br>
+                    • 再使用精确的字段限定细化结果<br>
+                    • 善用OR组合同义词扩大覆盖面<br>
+                    • 用NOT排除不相关内容</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4>📊 结果优化建议</h4>
+                    <p>• 控制检索结果在可操作范围(200-2000篇)<br>
+                    • 使用时间限定关注最新研究<br>
+                    • 结合影响因子和引用次数筛选<br>
+                    • 定期保存和更新检索策略</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4>🔄 跨库检索流程</h4>
+                    <p>• Web of Science: 适合引用分析和影响因子评估<br>
+                    • Scopus: 覆盖面广，工程技术文献丰富<br>
+                    • Google Scholar: 快速概览，包含灰色文献<br>
+                    • 建议多库结合，交叉验证</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4>💾 检索历史管理</h4>
+                    <p>• 详细记录每次检索的策略和结果<br>
+                    • 建立检索式版本控制<br>
+                    • 定期更新和优化检索策略<br>
+                    • 分享和复用成功的检索经验</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
