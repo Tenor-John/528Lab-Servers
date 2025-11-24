@@ -304,16 +304,16 @@ LDAUU、LDAUJ 分别设置U和J值
 
 # 30、IVDW
 
-| IVDW 值       | 类型                   | 描述                                                                                     |
-|---------------|------------------------|------------------------------------------------------------------------------------------|
-| 1 或 10       | pairwise               | DFT-D2 方法 (Grimme).[1] 自 VASP.5.2.11 起可用。                                         |
-| 11            | pairwise               | DFT-D3 方法 (Grimme) 带零阻尼函数.[2] 自 VASP.5.3.4 起可用。                             |
-| 12            | pairwise               | DFT-D3 方法带 Becke-Johnson 阻尼函数.[3] 自 VASP.5.3.4 起可用。                          |
-| 13            | pairwise               | DFT-D4 方法.[4] 自 VASP.6.2 起作为外部包可用。                                           |
-| 3             | pairwise               | DFT-ulg 方法.[5] 自 VASP.5.3.5 起可用。                                                 |
-| 4             | pairwise               | dDsC 色散修正方法.[6][7] 自 VASP.5.4.1 起可用。                                         |
-| 2 或 20       | pairwise               | Tkatchenko-Scheffler 方法.[8] 自 VASP.5.3.3 起可用。                                     |
-| 21            | pairwise               | Tkatchenko-Scheffler 方法带迭代 Hirshfeld 分区.[9][10] 自 VASP.5.3.5 起可用。            |
-| 202           | many-body              | 多体色散能量方法 (MBD@rsSCS).[11][12] 自 VASP.5.4.1 起可用。                             |
-| 263           | many-body              | 多体色散能量带分数离子模型极化率方法 (MBD@rSC/FI).[13][14] 自 VASP.6.1.0 起可用。        |
-| 14            | pairwise and many-body | libMBD 库中的多体色散方法之一.[15][16][17] 自 VASP.6.4.3 起作为外部包可用。              |
+| IVDW 值 | 类型                   | 描述                                                                              |
+| ------- | ---------------------- | --------------------------------------------------------------------------------- |
+| 1 或 10 | pairwise               | DFT-D2 方法 (Grimme).[1] 自 VASP.5.2.11 起可用。                                  |
+| 11      | pairwise               | DFT-D3 方法 (Grimme) 带零阻尼函数.[2] 自 VASP.5.3.4 起可用。                      |
+| 12      | pairwise               | DFT-D3 方法带 Becke-Johnson 阻尼函数.[3] 自 VASP.5.3.4 起可用。                   |
+| 13      | pairwise               | DFT-D4 方法.[4] 自 VASP.6.2 起作为外部包可用。                                    |
+| 3       | pairwise               | DFT-ulg 方法.[5] 自 VASP.5.3.5 起可用。                                           |
+| 4       | pairwise               | dDsC 色散修正方法.[6][7] 自 VASP.5.4.1 起可用。                                   |
+| 2 或 20 | pairwise               | Tkatchenko-Scheffler 方法.[8] 自 VASP.5.3.3 起可用。                              |
+| 21      | pairwise               | Tkatchenko-Scheffler 方法带迭代 Hirshfeld 分区.[9][10] 自 VASP.5.3.5 起可用。     |
+| 202     | many-body              | 多体色散能量方法 (MBD@rsSCS).[11][12] 自 VASP.5.4.1 起可用。                      |
+| 263     | many-body              | 多体色散能量带分数离子模型极化率方法 (MBD@rSC/FI).[13][14] 自 VASP.6.1.0 起可用。 |
+| 14      | pairwise and many-body | libMBD 库中的多体色散方法之一.[15][16][17] 自 VASP.6.4.3 起作为外部包可用。       |
